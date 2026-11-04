@@ -9,7 +9,7 @@
 Two services: **LiteLLM** and **Postgres**, which keeps models, keys and spend logs on a volume.
 
 - **Paste a key and start calling.** Add a provider key when you deploy, and every model from that provider works straight away, as `openai/<model>` or `anthropic/<model>`. No setup in the admin UI. You can still add more models there.
-- **The domain opens the admin UI.** Upstream shows its API docs at the root, which sends a lot of people looking for the login page. The docs move to `/docs`.
+- **The domain opens the admin UI.** Upstream shows its API docs at the root, so the login page is easy to miss. The docs move to `/docs`.
 - **Request logs get cleaned up.** Logs older than 30 days are deleted once a day, so they don't slowly fill the database. Change it with `SPEND_LOGS_RETENTION`.
 - **No Redis to pay for.** One LiteLLM instance doesn't need it. Add Redis only when you run more than one.
 - **A pinned version.** A redeploy never pulls an untested release.
@@ -47,7 +47,7 @@ curl https://<your-domain>/v1/chat/completions \
   -d '{"model": "openai/gpt-4o-mini", "messages": [{"role": "user", "content": "Hello"}]}'
 ```
 
-**Provider keys.** `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GEMINI_API_KEY` and `OPENROUTER_API_KEY` each turn on that provider's models as `provider/<model>`. Set them at deploy or later in Variables, which restarts the service. For anything else, add the model under **Models + Endpoints**. Keys you add there are encrypted in the database.
+**Provider keys.** `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GEMINI_API_KEY` and `OPENROUTER_API_KEY` each turn on that provider's models as `provider/<model>`. Set them at deploy or later in Variables, which restarts the service. OpenRouter models work but do not show up in `/v1/models`. For anything else, add the model under **Models + Endpoints**. Keys you add there are encrypted in the database.
 
 **Keep the salt key.** `LITELLM_SALT_KEY` encrypts the provider keys stored in the database. Back it up and never change it, or those keys become unreadable.
 
