@@ -1,6 +1,6 @@
 # Deploy and Host LiteLLM on Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/litellm-server?referralCode=sLjDXb&utm_medium=integration&utm_source=button&utm_campaign=litellm-server)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/router?referralCode=sLjDXb&utm_medium=integration&utm_source=button&utm_campaign=router)
 
 [LiteLLM](https://www.litellm.ai/) is an open source AI gateway. It puts OpenAI, Anthropic, Gemini, OpenRouter and 100+ other model providers behind one OpenAI-compatible API, with virtual keys, budgets and spend tracking. Your apps talk to one URL and never hold a provider key.
 
