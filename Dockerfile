@@ -1,3 +1,3 @@
-FROM ghcr.io/berriai/litellm:v1.108.0
+FROM ghcr.io/berriai/litellm:v1.110.3
 COPY railway-entrypoint.sh /railway-entrypoint.sh
 ENTRYPOINT ["/bin/sh", "/railway-entrypoint.sh"]
