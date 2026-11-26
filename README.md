@@ -53,7 +53,7 @@ curl https://<your-domain>/v1/chat/completions \
 
 **Banners in the admin UI.** "Environment-credential login is enabled" means the master key can sign in as admin, which is how you get in the first time. To close it, create an admin account with its own password, then follow the fix the banner links to.
 
-**Memory.** LiteLLM uses about 600 MB at idle and about 750 MB once it has served requests, more than most gateways, so give it at least 1 GB. Postgres adds about 60 MB, and more as logs grow.
+**Memory.** From v1.111.0 LiteLLM uses about 1.05 GB at idle (v1.110 used about 650 MB), more than most gateways, so give it 2 GB; 1.5 GB is the floor. Below about 1.4 GB it stalls while starting, so the service shows a notice page instead until you raise the limit and redeploy. Postgres adds about 60 MB, and more as logs grow.
 
 **Running more than one replica.** Rate limits and budgets then need to be shared between instances. Add a Redis service and set `REDIS_HOST`, `REDIS_PORT` and `REDIS_PASSWORD` on LiteLLM.
 
